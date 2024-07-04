@@ -40,31 +40,42 @@ public class AutoPropietario {
                 5,
                 true);
 
+        //se espera mensaje indicando que no hay aceleracion
         auto.acelerar();
 
+        //los cambios se realizaran con exito
         auto.cambioDeMarcha(-1);
         auto.cambioDeMarcha(0);
         auto.cambioDeMarcha(5);
+        //se espera mensaje indicando que no es una marcha valida
         auto.cambioDeMarcha(6);
+        //se reducira la marcha correctament
         auto.reduceLaMarcha();
 
+        //se espera mensaje indicando que no hay aceleracion
         auto.acelerar();
 
+        //establecer el combustible y verificar la capacidad
         auto.setCombustibleDisponible(11.5);
         auto.getNivelDeCombustible();
 
+        //La aceleracion se aplica correctamente
         auto.acelerar();
 
+        //se muestra la velocidad y se acelera
         System.out.println("El auto se mueve a " + auto.getVelocidadActual() + "km/h");
         auto.setVelocidadActual(150.0);
         System.out.println("El auto se mueve a " + auto.getVelocidadActual() + "km/h");
         auto.acelerar();
         System.out.println("El auto se mueve a " + auto.getVelocidadActual() + "km/h");
+        //el cambio de marcha no es posible
         auto.cambioDeMarcha(-1);
         auto.frenar();
+        //se verifica la velocidad y el cambio de marcha es exitoso
         System.out.println("El auto se mueve a " + auto.getVelocidadActual() + "km/h");
         auto.cambioDeMarcha(-1);
 
+        //se muestra la autonomia
         System.out.println("El auto rendira por " + auto.getAutonomia(1.5) + "km");
     }
 }

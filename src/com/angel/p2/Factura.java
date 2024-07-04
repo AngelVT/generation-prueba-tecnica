@@ -6,6 +6,7 @@ public class Factura {
     private int articulosComprados;
     private double precioPorArticulo;
 
+    //constructor
     public Factura(String numero, String descripcion, int articulosComprados, double precioPorArticulo) {
         this.numero = numero;
         this.descripcion = descripcion;
@@ -13,6 +14,7 @@ public class Factura {
         this.precioPorArticulo = precioPorArticulo;
     }
 
+    //gettes y setters
     public String getNumero() {
         return numero;
     }
@@ -45,6 +47,7 @@ public class Factura {
         this.precioPorArticulo = precioPorArticulo;
     }
 
+    //funcion para calcular el total de la factura, los valores negativos se transformaran en 0
     public Double  getTotalFactura() {
         if(precioPorArticulo < 0) {
             precioPorArticulo = 0.0;

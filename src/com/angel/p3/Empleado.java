@@ -5,12 +5,14 @@ public class Empleado {
     private String apellido;
     private double salarioMensual;
 
+    //constructor
     public Empleado(String nombre, String apellido, double salarioMensual) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.salarioMensual = salarioMensual;
     }
 
+    //getters y setters
     public String getNombre() {
         return nombre;
     }

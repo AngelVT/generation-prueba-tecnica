@@ -3,16 +3,19 @@ package com.angel.p4;
 public class IntegerSet {
     private boolean[] setEnteros;
 
+    //constructor
     public IntegerSet() {
         setEnteros = new boolean[101];
     }
 
+    //funcion para insertar un valor
     public void insertElement(int value) {
         if(value >= 0 && value <= 100) {
             setEnteros[value] = true;
         }
     }
 
+    //funcion para remover un valor
     public void deletElement(int value) {
         if(value >= 0 && value <= 100) {
             if(setEnteros[value]) {
@@ -21,6 +24,7 @@ public class IntegerSet {
         }
     }
 
+    //funcion para combinar dos los valores de dos sets
     public static IntegerSet union(IntegerSet set1, IntegerSet set2) {
         IntegerSet result = new IntegerSet();
         for (int i = 0; i < result.setEnteros.length; i++) {
@@ -29,6 +33,7 @@ public class IntegerSet {
         return result;
     }
 
+    //funcion para mostrar los valores que se intersectan dos los valores de dos sets
     public static IntegerSet interseccion(IntegerSet set1, IntegerSet set2) {
         IntegerSet result = new IntegerSet();
         for (int i = 0; i < result.setEnteros.length; i++) {
@@ -37,6 +42,7 @@ public class IntegerSet {
         return result;
     }
 
+    //metodo para verificar igualdad
     public boolean equalTo(IntegerSet set) {
         for (int i = 0; i < this.setEnteros.length; i++) {
             if(this.setEnteros[i] != set.setEnteros[i]) {
@@ -46,6 +52,7 @@ public class IntegerSet {
         return true;
     }
 
+    //metodo para representar set como string
     public String toSetString() {
         boolean isEmpty = true;
         String result = "";

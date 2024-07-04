@@ -17,6 +17,7 @@ public class Auto {
     private Integer marchaActual;
     private Boolean tieneTransmisionAutomatica;
 
+    //constructor
     public Auto(String modelo, String color, Integer ano, Marca marca, String chasis, Propietario propietario, Double capacidadDelTanque, Double velocidadMaxima, Integer numeroDePuertas, Boolean tieneTechoSolar, Integer numeroDeMarchas, Boolean tieneTransmisionAutomatica) {
         this.modelo = modelo;
         this.color = color;
@@ -25,8 +26,10 @@ public class Auto {
         this.chasis = chasis;
         this.propietario = propietario;
         this.capacidadDelTanque = capacidadDelTanque;
+        //un auto inicialmente no tiene combustible
         this.combustibleDisponible = 0.0;
         this.velocidadMaxima = velocidadMaxima;
+        //un auto no puede estar acelerado inicialmente
         this.velocidadActual = 0.0;
         this.numeroDePuertas = numeroDePuertas;
         this.tieneTechoSolar = tieneTechoSolar;
@@ -35,6 +38,7 @@ public class Auto {
         this.tieneTransmisionAutomatica = tieneTransmisionAutomatica;
     }
 
+    //getters y seters
     public String getModelo() {
         return modelo;
     }
@@ -51,11 +55,11 @@ public class Auto {
         this.color = color;
     }
 
-    public Integer getAño() {
+    public Integer getAno() {
         return ano;
     }
 
-    public void setAño(Integer año) {
+    public void setAno(Integer ano) {
         this.ano = ano;
     }
 
@@ -96,15 +100,20 @@ public class Auto {
     }
 
     public void setCombustibleDisponible(Double combustibleDisponible) {
-        this.combustibleDisponible = combustibleDisponible;
+        if (combustibleDisponible < capacidadDelTanque) {
+            this.combustibleDisponible = combustibleDisponible;
+            return;
+        }
+
+        this.combustibleDisponible = capacidadDelTanque;
     }
 
-    public Double getVelocidadMáxima() {
+    public Double getVelocidadMaxima() {
         return velocidadMaxima;
     }
 
-    public void setVelocidadMáxima(Double velocidadMáxima) {
-        this.velocidadMaxima = velocidadMáxima;
+    public void setVelocidadMaxima(Double velocidadMaxima) {
+        this.velocidadMaxima = velocidadMaxima;
     }
 
     public Double getVelocidadActual() {
@@ -147,16 +156,20 @@ public class Auto {
         this.tieneTransmisionAutomatica = tieneTransmisionAutomatica;
     }
 
+    //metodo para saber la marcha actual
     public void marchaStatus() {
         System.out.println(marchaActual == -1 ? "La marcha se encuentra en reversa" : marchaActual == 0 ? "La marcha se encuentra en neutral" : "La marcha se encuentra en " + marchaActual);
     }
 
+    //acelerar del auto de uno en uno
     public void acelerar() {
+        //no se puede acelerar en neutral
         if(marchaActual == 0) {
             System.out.println("No puedes acelerar el vehiculo si estas en neutral");
             return;
         }
 
+        //no debe poder acelerar si snotiene combustible
         if(combustibleDisponible == 0.0) {
             System.out.println("No puedes acelerar el vehiculo si no tiene combustible");
             return;
@@ -167,10 +180,12 @@ public class Auto {
         }
     }
 
+    //funcion de frenado
     public void frenar() {
         velocidadActual = 0.0;
     }
 
+    //funcion para calcular la autonomia
     public double getAutonomia(Double consumo) {
         if (consumo <= 0) {
             return 0.0;
@@ -178,12 +193,15 @@ public class Auto {
         return combustibleDisponible / consumo;
     }
 
+    //funcion para cambios de marcha 0 = neutral y -1 = reversa
     public void cambioDeMarcha(Integer marcha) {
+        //verificar si la marcha es valida
         if (marcha < -1 || marcha > numeroDeMarchas) {
             System.out.println("Marcha no valida");
             return;
         }
 
+        //verificar en caso de cambiar a reversa si es posible
         if (marcha == -1 && velocidadActual > 0.0) {
             System.out.println("No se puede dar marcha atras miesntras estas en movimiento");
             return;
@@ -194,6 +212,7 @@ public class Auto {
         marchaStatus();
     }
 
+    //funcion para reducir la marcha
     public void reduceLaMarcha() {
         if (marchaActual == -1) {
             System.out.println("No se puede reducir la marcha");

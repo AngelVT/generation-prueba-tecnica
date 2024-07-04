@@ -19,6 +19,7 @@ public class FacturaTest {
                 7,
                 -1.5);
 
+        //se muetran los resultado en los caos normales y en los que se encuentran valores negativos
         System.out.println("Factura normal " + factura1.getTotalFactura());
         System.out.println("Factura que generaria un valor negativo " + factura2.getTotalFactura());
         System.out.println("Factura con precio negativo " + factura3.getTotalFactura());

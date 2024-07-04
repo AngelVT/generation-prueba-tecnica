@@ -40,13 +40,18 @@ public class AutoPropietario {
                 5,
                 true);
 
-        auto.setCombustibleDisponible(11.5);
+        auto.acelerar();
 
         auto.cambioDeMarcha(-1);
         auto.cambioDeMarcha(0);
         auto.cambioDeMarcha(5);
         auto.cambioDeMarcha(6);
         auto.reduceLaMarcha();
+
+        auto.acelerar();
+
+        auto.setCombustibleDisponible(11.5);
+        auto.getNivelDeCombustible();
 
         auto.acelerar();
 
@@ -59,8 +64,6 @@ public class AutoPropietario {
         auto.frenar();
         System.out.println("El auto se mueve a " + auto.getVelocidadActual() + "km/h");
         auto.cambioDeMarcha(-1);
-
-        auto.getNivelDeCombustible();
 
         System.out.println("El auto rendira por " + auto.getAutonomia(1.5) + "km");
     }

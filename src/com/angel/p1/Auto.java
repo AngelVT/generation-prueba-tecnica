@@ -3,13 +3,13 @@ package com.angel.p1;
 public class Auto {
     private String modelo;
     private String color;
-    private Integer año;
+    private Integer ano;
     private Marca marca;
     private String chasis;
     private Propietario propietario;
     private Double capacidadDelTanque;
     private Double combustibleDisponible;
-    private Double velocidadMáxima;
+    private Double velocidadMaxima;
     private Double velocidadActual;
     private Integer numeroDePuertas;
     private Boolean tieneTechoSolar;
@@ -17,15 +17,16 @@ public class Auto {
     private Integer marchaActual;
     private Boolean tieneTransmisionAutomatica;
 
-    public Auto(String modelo, String color, Integer año, Marca marca, String chasis, Propietario propietario, Double capacidadDelTanque, Double velocidadMáxima, Integer numeroDePuertas, Boolean tieneTechoSolar, Integer numeroDeMarchas, Boolean tieneTransmisionAutomatica) {
+    public Auto(String modelo, String color, Integer ano, Marca marca, String chasis, Propietario propietario, Double capacidadDelTanque, Double velocidadMaxima, Integer numeroDePuertas, Boolean tieneTechoSolar, Integer numeroDeMarchas, Boolean tieneTransmisionAutomatica) {
         this.modelo = modelo;
         this.color = color;
-        this.año = año;
+        this.ano = ano;
         this.marca = marca;
         this.chasis = chasis;
         this.propietario = propietario;
         this.capacidadDelTanque = capacidadDelTanque;
-        this.velocidadMáxima = velocidadMáxima;
+        this.combustibleDisponible = 0.0;
+        this.velocidadMaxima = velocidadMaxima;
         this.velocidadActual = 0.0;
         this.numeroDePuertas = numeroDePuertas;
         this.tieneTechoSolar = tieneTechoSolar;
@@ -51,11 +52,11 @@ public class Auto {
     }
 
     public Integer getAño() {
-        return año;
+        return ano;
     }
 
     public void setAño(Integer año) {
-        this.año = año;
+        this.ano = ano;
     }
 
     public Marca getMarca() {
@@ -99,11 +100,11 @@ public class Auto {
     }
 
     public Double getVelocidadMáxima() {
-        return velocidadMáxima;
+        return velocidadMaxima;
     }
 
     public void setVelocidadMáxima(Double velocidadMáxima) {
-        this.velocidadMáxima = velocidadMáxima;
+        this.velocidadMaxima = velocidadMáxima;
     }
 
     public Double getVelocidadActual() {
@@ -156,7 +157,12 @@ public class Auto {
             return;
         }
 
-        if(velocidadActual < velocidadMáxima) {
+        if(combustibleDisponible == 0.0) {
+            System.out.println("No puedes acelerar el vehiculo si no tiene combustible");
+            return;
+        }
+
+        if(velocidadActual < velocidadMaxima) {
             velocidadActual += 1.0;
         }
     }

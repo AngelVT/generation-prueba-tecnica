@@ -1,4 +1,4 @@
-package p1;
+package com.angel.p1;
 
 public class Auto {
     private String modelo;
@@ -146,6 +146,10 @@ public class Auto {
         this.tieneTransmisionAutomatica = tieneTransmisionAutomatica;
     }
 
+    public void marchaStatus() {
+        System.out.println(marchaActual == -1 ? "La marcha se encuentra en reversa" : marchaActual == 0 ? "La marcha se encuentra en neutral" : "La marcha se encuentra en " + marchaActual);
+    }
+
     public void acelerar() {
         if(marchaActual == 0) {
             System.out.println("No puedes acelerar el vehiculo si estas en neutral");
@@ -181,7 +185,7 @@ public class Auto {
 
         marchaActual = marcha;
 
-        System.out.println("La marcha cambio a " + marchaActual);
+        marchaStatus();
     }
 
     public void reduceLaMarcha() {
@@ -191,16 +195,16 @@ public class Auto {
         }
 
         if (marchaActual == 0 && velocidadActual > 0.0) {
-            System.out.println("No se puede dar marcha atras miesntras estas en movimiento");
+            System.out.println("No se puede dar marcha atras mientras estas en movimiento");
             return;
         }
 
         marchaActual--;
 
-        System.out.println("La marcha cambio a " + marchaActual);
+        marchaStatus();
     }
 
     public void getNivelDeCombustible() {
-        System.out.println("Volumen de combustible: " + combustibleDisponible + "/" + capacidadDelTanque);
+        System.out.println("Volumen de combustible: " + combustibleDisponible + "/" + capacidadDelTanque + " litros");
     }
 }

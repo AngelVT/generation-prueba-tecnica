@@ -1,4 +1,4 @@
-package p1;
+package com.angel.p1;
 
 public class Marca {
     private String nombre;
